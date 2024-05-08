@@ -10,7 +10,7 @@ public class Main {
         List<Transaction> transactions = csvReader.readTransactions(filePath);
 
         TransactionAnalyzer analyzer = new TransactionAnalyzer(transactions);
-        TransactionReportGenerator reportGenerator = new TransactionReportGenerator();
+        TransactionReportGenerator reportGenerator = new TransactionReportGenerator(analyzer);
 
         double totalBalance = analyzer.calculateTotalBalance();
         reportGenerator.printBalanceReport(totalBalance);
@@ -23,8 +23,16 @@ public class Main {
 
         List<Transaction> topExpenses = analyzer.findTopExpenses();
         reportGenerator.printTopExpensesReport(topExpenses);
+
+        Map<String, Double> topExpenseCategories = analyzer.calculateTopExpenseCategories();
+        reportGenerator.printTopExpenseCategories(topExpenseCategories);
+
+
+        reportGenerator.writeTotalExpensesReport("total_expenses_report.txt", analyzer.calculateTotalExpensesByMonth(), analyzer.calculateTotalExpensesByCategory());
+        System.out.println("Звіт збережено у файлі total_expenses_report.txt");
     }
 }
+
 
 
 

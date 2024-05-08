@@ -1,9 +1,10 @@
 package com.kroll;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.IOException;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TransactionCSVReaderTest {
 
@@ -15,4 +16,5 @@ public class TransactionCSVReaderTest {
         assertEquals(26, transactions.size());
     }
 }
+
 
